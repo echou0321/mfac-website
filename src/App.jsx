@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Pages
+import Home from './components/Home';
+import Performances from './components/Performances';
+import Officers from './components/Officers';
+import Donate from './components/Donate';
+import ContactUs from './components/ContactUs';
+import Events from './components/Events';
+import JoinUs from './components/JoinUs';
+import SocialMedia from './components/SocialMedia';
+
+// Optional layout components (you can create these later)
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      {/* Optional top navigation */}
+      <NavBar />
+
+      {/* Page content */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/performances" element={<Performances />} />
+        <Route path="/officers" element={<Officers />} />
+        <Route path="/donate" element={<Donate />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/join" element={<JoinUs />} />
+        <Route path="/social" element={<SocialMedia />} />
+      </Routes>
+
+      {/* Optional footer */}
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
